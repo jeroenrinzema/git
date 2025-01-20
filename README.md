@@ -93,9 +93,10 @@ git merge master         # Merge the master branch into your currently checked o
 git rebase master        # Rebase current branch on top of master branch
 
 # Working with Remotes
-git remote              # Show your current remotes
-git remote -v           # Show your current remotes and their URLs
-git push                # Publish your commits to the upstream master of your currently checked out branch
+git remote                  # Show your current remotes
+git remote -v               # Show your current remotes and their URLs
+git push                    # Publish your commits to the upstream master of your currently checked out branch
+git remote add origin <url> # Add a remote called origin with the given url
 git push -u origin my-branch  # Push newly created branch to remote repo setting up to track remote branch from origin.
                               # No need to specify remote branch name, for e.g., when doing a 'git pull' on that branch.
 git pull                # Pull changes from the remote to your currently checked out branch
