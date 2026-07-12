@@ -2,6 +2,9 @@
 **/remote
 **/seed
 **/teammate
+**/team-app
+**/fork
+**/upstream
 
 # Worktrees kata (23_worktrees) creates these sibling working directories
 **/hotfix
