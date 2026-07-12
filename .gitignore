@@ -3,6 +3,6 @@
 
 # Worktrees kata (23_worktrees) creates these sibling working directories
 **/hotfix
-**/agent
-**/agent2
+**/feature
+**/feature2
 **/review

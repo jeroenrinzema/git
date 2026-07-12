@@ -5,22 +5,20 @@ own directory, while sharing a single `.git` database. Instead of `git stash`-in
 your work, switching branches, and switching back, you simply open a second
 working directory that lives on a different branch.
 
-## Why this matters for AI
+This is handy whenever you need to touch another branch without disturbing what
+you are doing right now:
 
-When you let an AI agent work on your codebase, you often want it to work on a
-task **without disturbing what you (or another agent) are doing right now**.
-Switching branches in place is disruptive: it rewrites the files under everyone's
-feet, breaks running dev servers, and forces you to stash unfinished work.
+- Handle an urgent hotfix while your feature work sits untouched — no stash, no
+  checkout dance.
+- Keep a dev server, editor, or debugger running in one worktree while you build
+  or test in another.
+- Review or test a colleague's branch by just `cd`-ing into a worktree, then
+  throw it away when you're done.
 
-Worktrees solve this. Each agent — or each parallel task — gets its own isolated
-directory on its own branch, all backed by the same repository:
-
-- Run several agents in parallel, one per worktree, with **no merge conflicts on
-  the working tree** and no fighting over `git switch`.
-- Keep your main worktree running (dev server, editor, debugger) while an agent
-  builds a feature or fixes a bug next door.
-- Review or test an agent's branch by just `cd`-ing into its worktree — no
-  stashing, no checkout dance.
+> :bulb: This is especially useful when running AI coding agents: give each agent
+> its own worktree on its own branch and several can work in parallel — no merge
+> conflicts on the working tree, no fighting over `git switch`, and your main
+> checkout keeps running undisturbed.
 
 ## Setup
 
@@ -56,17 +54,17 @@ your change first. Let's use a worktree instead.
 8. `cd` back to the `exercise` directory. Notice your uncommitted change is still
    waiting exactly as you left it — you never had to stash.
 
-   Now simulate handing a task to a parallel agent. The
+   Now pick up a second, parallel line of work. The
    `feature/uppercase-greeting` branch already exists.
 
 9. Attach a worktree to that **existing** branch:
-   `git worktree add ../agent feature/uppercase-greeting`.
+   `git worktree add ../feature feature/uppercase-greeting`.
    (Note: no `-b` this time, because the branch already exists.)
 10. Try to add a *second* worktree for the same branch:
-    `git worktree add ../agent2 feature/uppercase-greeting`. What happens, and
+    `git worktree add ../feature2 feature/uppercase-greeting`. What happens, and
     why does git refuse? (A branch can only be checked out in one worktree.)
-11. `cd ../agent`. This is your "agent's" isolated sandbox. Change the greeting to
-    uppercase in `app.py` (`"HELLO"` style) and
+11. `cd ../feature`. This is an isolated sandbox for the feature. Change the
+    greeting to uppercase in `app.py` (`"HELLO"` style) and
     `git commit -am "Feature: shout the greeting"`.
 12. From here run `git log --oneline --graph --all`. You should see three lines of
     work — `master`, `hotfix`, and `feature/uppercase-greeting` — that were all
@@ -81,7 +79,7 @@ your change first. Let's use a worktree instead.
 15. Remove the finished hotfix worktree: `git worktree remove ../hotfix`.
     What happens to the `hotfix` **branch** — is it gone too? (Removing a worktree
     does *not* delete the branch.)
-16. Manually delete the `../agent` directory with `rm -rf ../agent`, then run
+16. Manually delete the `../feature` directory with `rm -rf ../feature`, then run
     `git worktree list`. It still lists a stale entry! Run `git worktree prune`
     and list again to clean up the bookkeeping.
 17. As a bonus: try `git worktree add --detach ../review HEAD~1` to check out a
