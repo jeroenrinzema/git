@@ -4,6 +4,90 @@
 
 For more exercises and detailed explanations, you can refer to the [git-katas repository](https://github.com/eficode-academy/git-katas) by Eficode Academy.
 
+## Exercises
+
+Each exercise is a self-contained folder. Run its setup script and follow the
+`README.md`:
+
+```sh
+$ cd 01_basic_staging
+$ source setup.sh
+```
+
+The exercises are grouped into a suggested learning path. You can do them in any
+order, but within a module later exercises assume the earlier ones.
+
+### A — Foundations
+
+| Exercise | What you learn |
+|----------|----------------|
+| [01_basic_staging](01_basic_staging) | The staging area: `add`, `status`, `diff` |
+| [02_basic_commit](02_basic_commit) | Making commits |
+| [03_basic_branching](03_basic_branching) | Creating and switching branches |
+| [04_amend](04_amend) | Fixing the last commit with `--amend` |
+| [32_gitignore_untracking](32_gitignore_untracking) | `.gitignore` and untracking committed files |
+
+### B — Merging & rewriting history
+
+| Exercise | What you learn |
+|----------|----------------|
+| [05_ff_merging](05_ff_merging) | Fast-forward merges |
+| [08_merge_conflict](08_merge_conflict) | Resolving a merge conflict between two local branches |
+| [09_cherry-pick](09_cherry-pick) | Copying a commit with `cherry-pick` |
+| [11_rebase_branch](11_rebase_branch) | Rebasing a branch |
+| [12_interactive_rebase](12_interactive_rebase) | Reordering, squashing and rewording with `rebase -i` |
+| [13_squashing](13_squashing) | Squashing commits |
+| [16_reverted_merge](16_reverted_merge) | Reverting (and re-doing) a merge |
+
+### C — Undo, recovery & context-switching
+
+| Exercise | What you learn |
+|----------|----------------|
+| [06_basic_revert](06_basic_revert) | Undoing a commit with `revert` |
+| [07_detached_head](07_detached_head) | Understanding detached HEAD |
+| [15_commit_on_wrong_branch](15_commit_on_wrong_branch) | Moving a commit to the right branch |
+| [19_save_my_commit](19_save_my_commit) | Recovering lost commits with the reflog |
+| [30_stash](30_stash) | Setting work aside with `stash` |
+| [31_abort_operations](31_abort_operations) | Backing out of a merge / rebase / cherry-pick |
+| [23_worktrees](23_worktrees) | Multiple branches checked out at once with worktrees |
+
+### D — Collaboration (working together over a remote)
+
+| Exercise | What you learn |
+|----------|----------------|
+| [24_remotes_and_tracking](24_remotes_and_tracking) | Remotes, `fetch` vs `pull`, tracking branches |
+| [25_diverged_push](25_diverged_push) | The "rejected push" and how to recover |
+| [26_collaborative_conflict](26_collaborative_conflict) | Resolving a conflict that arrived from the remote |
+| [27_force_with_lease](27_force_with_lease) | Rewriting shared history safely |
+| [28_pull_request_workflow](28_pull_request_workflow) | The full pull-request loop (with a local Gitea server) |
+| [29_fork_and_upstream](29_fork_and_upstream) | Forks and keeping in sync with upstream |
+
+> These run against an **isolated remote** — a local bare repository, so nothing
+> leaves your machine. If you'd like a *real* server, `utils/serve-remote.sh`
+> spins up git's built-in daemon on `localhost`, and
+> [28_pull_request_workflow](28_pull_request_workflow) uses a local
+> [Gitea](https://about.gitea.com/) server (via `utils/gitea/`) for a genuine
+> pull-request UI. Both are optional and fully offline.
+
+### E — Investigation & archaeology
+
+| Exercise | What you learn |
+|----------|----------------|
+| [17_bisect](17_bisect) | Finding a bad commit with `bisect` |
+| [20_investigation](20_investigation) | How git stores objects |
+| [33_blame_and_pickaxe](33_blame_and_pickaxe) | `blame` and the `log -S`/`-G` pickaxe |
+
+### F — Advanced & specialized
+
+| Exercise | What you learn |
+|----------|----------------|
+| [10_tags](10_tags) | Tagging releases |
+| [21_signed-commits](21_signed-commits) | Signing commits with GPG |
+| [18_submodules](18_submodules) | Embedding repositories with submodules |
+| [22_lfs](22_lfs) | Large files with Git LFS |
+| [34_rerere](34_rerere) | Reusing recorded conflict resolutions |
+| [35_hooks](35_hooks) | Automating checks with git hooks |
+
 ## Initial set-up
 
 ```sh
