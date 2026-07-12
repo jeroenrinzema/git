@@ -1,2 +1,8 @@
 **/exercise
 **/remote
+
+# Worktrees kata (23_worktrees) creates these sibling working directories
+**/hotfix
+**/agent
+**/agent2
+**/review
