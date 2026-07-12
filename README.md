@@ -26,7 +26,7 @@ A collection of useful commands to use throughout the exercises:
 git init            # Initialize an empty git repository under current directory.
 
 # Cloning a repository
-git clone https://github.com/praqma-training/git-katas.git      # Clone this repository to your current working directory
+git clone https://github.com/jeroenrinzema/git.git      # Clone this repository to your current working directory
 
 # Git (user and repo level) configurations
 git config --local user.name "Repo-level Username"          # For setting a local git repo level user name.
