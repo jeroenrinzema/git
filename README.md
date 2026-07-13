@@ -37,6 +37,7 @@ order, but within a module later exercises assume the earlier ones.
 | [11_rebase_branch](11_rebase_branch) | Rebasing a branch |
 | [12_interactive_rebase](12_interactive_rebase) | Reordering, squashing and rewording with `rebase -i` |
 | [13_squashing](13_squashing) | Squashing commits |
+| [37_split_commit](37_split_commit) | Splitting one commit into several with `rebase -i` |
 | [16_reverted_merge](16_reverted_merge) | Reverting (and re-doing) a merge |
 
 ### C — Undo, recovery & context-switching
@@ -61,6 +62,7 @@ order, but within a module later exercises assume the earlier ones.
 | [27_force_with_lease](27_force_with_lease) | Rewriting shared history safely |
 | [28_pull_request_workflow](28_pull_request_workflow) | The full pull-request loop (with a local Gitea server) |
 | [29_fork_and_upstream](29_fork_and_upstream) | Forks and keeping in sync with upstream |
+| [36_patches_and_am](36_patches_and_am) | Patches by email: `apply`, `format-patch`, `am` |
 
 > These run against an **isolated remote** — a local bare repository, so nothing
 > leaves your machine. If you'd like a *real* server, `utils/serve-remote.sh`
@@ -87,6 +89,8 @@ order, but within a module later exercises assume the earlier ones.
 | [22_lfs](22_lfs) | Large files with Git LFS |
 | [34_rerere](34_rerere) | Reusing recorded conflict resolutions |
 | [35_hooks](35_hooks) | Automating checks with git hooks |
+| [38_filter_repo](38_filter_repo) | Scrubbing a secret from all history with `filter-repo` |
+| [39_bundle](39_bundle) | Moving history offline as a single file with `bundle` |
 
 ## Initial set-up
 

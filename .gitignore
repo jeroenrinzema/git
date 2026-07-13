@@ -11,3 +11,11 @@
 **/feature
 **/feature2
 **/review
+
+# Bundle kata (39_bundle) creates these
+**/project
+**/laptop
+*.bundle
+
+# Patches kata (36_patches_and_am) creates generated patch files in exercise/
+*.patch
