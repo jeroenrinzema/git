@@ -11,6 +11,10 @@ $ source setup.sh
 You again live in your own branch, this time we will be doing a bit of juggling with branches, to show how lightweight branches are in git.
 Hint: `git switch` will make you switch from one branch to another.
 
+> The setup already created a spare branch (`second-branch`) so that step 1 has
+> something to show. You won't need it — you'll create and work on your own
+> `mybranch` from step 3 onwards.
+
 1. Use `git branch` to see the two branches that are relevant for this exercise
 2. What branch are you on?
 3. Use `git branch mybranch` to create a new branch called _mybranch_

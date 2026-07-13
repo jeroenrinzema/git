@@ -46,7 +46,7 @@ git lfs install
 
 ## Setup
 
-1. Run `source setup.sh` (or `.\setup.ps1` in PowerShell)
+1. Run `source setup.sh`
 
 When you have run the script, you should have two folders:
 
