@@ -35,23 +35,31 @@ commit to the remote since you cloned.
    **diverged** — "have 1 and 1 different commits each". Visualise it with
    `git log --oneline --graph --all`.
 
-   You have two ways to integrate. Let's use **rebase**, which keeps history
-   linear by replaying your commit on top of the teammate's.
+   You have two ways to integrate. We'll try **both** on this same divergence —
+   without pushing in between — so you can compare the shape each one produces.
+
+   First, **rebase**, which keeps history linear by replaying your commit on top
+   of the teammate's.
 
 5. Run `git pull --rebase`. What does the output say it is doing?
-6. Run `git log --oneline --graph --all` again. Notice your commit now sits
-   **on top of** the teammate's commit — no merge commit, one straight line.
-7. Now `git push`. It succeeds, because your branch is a fast-forward of
-   `origin/master`.
+6. Run `git log --oneline --graph --all`. Notice your commit now sits **on top
+   of** the teammate's commit — no merge commit, one straight line.
 
-   Let's also see the other option: **merge** (the default for `git pull`).
+   Now let's see the other option — **merge** (the default for `git pull`) — by
+   rewinding to the diverged state and integrating the other way.
 
-8. Undo your push locally to replay the scenario: run
-   `git reset --hard HEAD~1`, then `git pull --rebase=false` (a plain merge).
+7. Return to exactly where you were before the rebase:
+   `git reset --hard ORIG_HEAD`. (`ORIG_HEAD` is a bookmark git sets to your
+   previous position whenever an operation like pull/rebase/merge moves you — a
+   handy one-step undo.) Run `git status`: you're **diverged again**, "ahead 1,
+   behind 1".
+8. Integrate by merging this time: `git pull --rebase=false` (accept the default
+   merge message).
 9. Look at `git log --oneline --graph --all`. This time git created a **merge
-   commit** joining the two lines. Both approaches are valid — rebase gives a
-   linear history, merge preserves the exact shape of what happened.
-10. `git push` to finish.
+   commit** with two parents, joining the two lines. Both approaches are valid —
+   rebase gives a linear history, merge preserves the exact shape of what happened.
+10. `git push` to finish. It succeeds because your merge commit already contains
+    the teammate's work, so it's a fast-forward for the remote.
 
 As a bonus: configure `git config pull.rebase true` so `git pull` rebases by
 default, and read what `git config pull.ff only` would do instead (refuse to
@@ -64,6 +72,7 @@ git fetch                 # See what the remote has without changing your files
 git status                # Tells you when you are ahead / behind / diverged
 git pull --rebase         # Integrate by replaying your commits (linear history)
 git pull --rebase=false   # Integrate by merging (creates a merge commit)
+git reset --hard ORIG_HEAD # Undo the last pull/rebase/merge, back to your prior position
 git log --oneline --graph --all   # See how the two histories relate
 git config pull.rebase true       # Make rebase the default for git pull
 ```

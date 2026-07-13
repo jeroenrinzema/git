@@ -13,8 +13,8 @@ echo "hello" > greeting.txt
 git add greeting.txt
 git commit -m "Add content to greeting.txt"
 
-# Create a file on branch1
-git checkout -b $kata-branch1
+# Create a file on the feature branch
+git checkout -b merge-conflict-branch
 echo "This is a relevant fact conflicting with the truth" > file.txt
 git add file.txt
 git commit -m "add relevant fact"

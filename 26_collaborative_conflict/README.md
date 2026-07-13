@@ -43,8 +43,10 @@ pushed a change to one of its lines.
    - `<<<<<<< HEAD` … `=======` is **your** version.
    - `=======` … `>>>>>>>` is the **teammate's** version.
 
-5. Resolve it by hand: decide the final value (say you agree on `port: 9090`),
-   and delete the three marker lines so the file is valid again.
+5. Resolve it by hand: decide the final value — keep your `port: 3000` — and
+   delete the three marker lines so the file is valid again. (Picking a value
+   different from the teammate's keeps your change meaningful; see the note in
+   step 9 for why that matters on the rebase path.)
 6. Mark it resolved and finish the merge:
 
    ```sh
@@ -60,8 +62,8 @@ pushed a change to one of its lines.
 8. Undo the merge to replay the scenario: `git reset --hard HEAD~1`. You're back
    on your own commit, with the teammate's change still unmerged.
 9. Integrate with rebase instead: `git pull --rebase`. You hit the **same
-   conflict**, because you both touched the `port` line. Resolve `config.yml` the
-   same way, then continue with:
+   conflict**, because you both touched the `port` line. Resolve `config.yml`
+   again to your `port: 3000`, then continue with:
 
    ```sh
    git add config.yml
@@ -70,6 +72,10 @@ pushed a change to one of its lines.
 
    Look at `git log --oneline --graph` — this time there's **no merge commit**,
    just your change replayed on top of the teammate's.
+
+   > :bulb: If you instead resolve to the teammate's *exact* value, your commit
+   > would carry no net change — git detects the now-empty commit and drops it,
+   > leaving only the teammate's line. Keeping a distinct value avoids that here.
 10. If a rebase ever gets too messy, remember you can bail out entirely with
     `git rebase --abort` and be back exactly where you started.
 11. Finally, publish your resolved work with `git push`. It succeeds now that you

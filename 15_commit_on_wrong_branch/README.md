@@ -48,10 +48,13 @@ Note: since the `B` in the current and in the target structure don't have the sa
 ## The task
 
 1. Use `git log --oneline --graph --all` to view all the branches and their commits.
-2. Copy `C` onto `master` before `B` by rebasing `quickfix` on `master`.
+2. Copy `C` onto `master` before `B`: switch to `master` and rebase it **onto**
+   `quickfix` — `git switch master` then `git rebase quickfix`. This replays `B`
+   on top of `C`, so `master` becomes `A → C → B`. (Mind the direction: you're
+   moving `master`'s work onto `quickfix`, not the other way around.)
 3. Make a new branch (`changes-including-B`) off of our `master` so we can keep working on `B`.
-4. Reset `master` back to `C`.
-5. Delete the `quickfix` branch.
+4. Reset `master` back to `C` (e.g. `git reset --soft HEAD~`).
+5. Delete the `quickfix` branch (`git branch -d quickfix` — safe now that `C` lives on `master`).
 6. Push `master`. You can't do this in the training exercise.
 7. You can merge the `changes-including-B` branch to `master` and delete `changes-including-B` or just switch to `changes-including-B` and work there.
 
